@@ -1,2 +1,0 @@
-This library is designed to run in the s&box editor only.
-Please don't remove this folder.
