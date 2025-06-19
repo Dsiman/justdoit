@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "db34d1f9fbb2d26b",
+    "type": "split",
+    "children": [
+      {
+        "id": "ea1d8ce31e31ae92",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f7c69a8579ecc30c",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9056543c93f5e9c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "2787623319e504a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "716a294380147d6c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "4be5263739d0131b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c0f0cb7c16a1c626",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dd5b080571ba2d24",
+    "type": "split",
+    "children": [
+      {
+        "id": "339956c42500f2b7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d73e608ace6e1c56",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "5e62c4278db301f0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "32bbf029fb0318f1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2b52ae479f4affa5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "716a294380147d6c",
+  "lastOpenFiles": [
+    "Libraries/toss.cl/Editor/obj/Debug/cl.editor.AssemblyInfo.cs",
+    "Libraries/toss.cl/Editor/obj/Debug/cl.editor.AssemblyInfoInputs.cache",
+    "Libraries/toss.cl/Editor/obj/Debug/cl.editor.GeneratedMSBuildEditorConfig.editorconfig",
+    "Libraries/toss.cl/Editor/obj/Debug/cl.editor.csproj.AssemblyReference.cache",
+    "Libraries/toss.cl/Editor/obj/Debug/cl.editor.GlobalUsings.g.cs",
+    "Libraries/toss.cl/Editor/obj/Debug/ref",
+    "Libraries/toss.cl/Editor/obj/Debug/refint",
+    "Code/obj/Debug/justdoit.AssemblyInfo.cs",
+    "Code/obj/Debug/justdoit.AssemblyInfoInputs.cache",
+    "Code/obj/Debug/justdoit.GeneratedMSBuildEditorConfig.editorconfig",
+    "Code/obj/Debug/justdoit.csproj.AssemblyReference.cache",
+    "README.md",
+    "Welcome.md",
+    "create a link.md"
+  ]
+}
