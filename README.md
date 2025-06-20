@@ -106,5 +106,17 @@ If you want to contribute using Obsidian:
 
 ---
 
+## 🌐 Outside Links
+
+Here are some helpful links related to tools, docs, and external resources:
+
+- [Obsidian](https://obsidian.md/) — Markdown-based note-taking tool we're using for project docs.
+- [Visual Studio Code](https://code.visualstudio.com/) — Our recommended code editor for working on the project.
+- [S&Box](https://sbox.game/) — The game platform we're building on.
+- [S&Box Dev Docs](https://sbox.game/dev/doc) — Official documentation for development.
+- [S&Box Cheat Sheet](https://sbox.game/dev/doc/code/code-basics/) — Quick reference for coding in S&Box.
+- **Internal Docs** — Coming soon: `tbd.com`
+
+---
 Let’s just complete **one** project.  
 Then we can do it again. 🚀
