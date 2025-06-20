@@ -11,10 +11,14 @@
             "id": "f7c69a8579ecc30c",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -162,8 +166,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "716a294380147d6c",
+  "active": "f7c69a8579ecc30c",
   "lastOpenFiles": [
+    "🛠️ justdoit - Just Complete One Project.md",
+    "README.md",
+    "Images/20250619171854.png",
+    "Images/20250619171613.png",
+    "Images/20250619171806.png",
+    "Images/20250619171536.png",
+    "Images/20250619171126.png",
+    "Images/20250619170753.png",
+    "Pasted image 20250619170518.png",
+    "Images/20250619170545.png",
+    "Assets/Printers/medprinterv22.vmdl_c",
+    "Assets/Printers/medprinterv22.vmdl",
+    "Pasted image 20250619170511.png",
+    "Pasted image 20250619170505.png",
+    "Images",
     "Libraries/stellawisps.betterprojectsettings/Code/codefile.cs",
     "Libraries/stellawisps.betterprojectsettings/Code",
     "Libraries/stellawisps.betterprojectsettings/Editor/ProjectSettings.cs",
@@ -171,11 +190,6 @@
     "Libraries/stellawisps.betterprojectsettings/Assets/Materials/library_material.vmat_c",
     "Libraries/stellawisps.betterprojectsettings/Editor/MyEditorMenu.cs",
     "Libraries/stellawisps.betterprojectsettings/Editor",
-    "Libraries/stellawisps.betterprojectsettings/oldinspector.sbproj",
-    "Libraries/stellawisps.betterprojectsettings/Assets/Materials/default/default_color_tga_380558b.generated.vtex_c",
-    "Libraries/stellawisps.betterprojectsettings/Assets/Materials/default/default_ao_tga_7449568e.generated.vtex_c",
-    "Libraries/stellawisps.betterprojectsettings/Assets/Materials/library_material.vmat",
-    "README.md",
     "Welcome.md",
     "create a link.md"
   ]
