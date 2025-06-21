@@ -138,7 +138,7 @@
       "Name": "Plane",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
-      "Scale": "5,5,5",
+      "Scale": "10,10,5",
       "Tags": "",
       "Enabled": true,
       "NetworkMode": 2,
@@ -153,7 +153,7 @@
           "BodyGroups": 18446744073709551615,
           "CreateAttachments": false,
           "MaterialGroup": null,
-          "MaterialOverride": "materials/default.vmat",
+          "MaterialOverride": "rocks/sulfuroretexture.vmat",
           "Model": "models/dev/plane.vmdl",
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -683,7 +683,7 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "Tint": "1,0.72558,0.72558,1"
         }
       ],
       "Children": []
@@ -726,6 +726,48 @@
           },
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "c99dd268-1a37-49ec-8b35-21de0b3c3e66",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "sulfurorenodev1",
+      "Position": "3.147846,160.9076,43.36681",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "3f385e7e-dd6e-4d30-927e-e33ebe31d4cd",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
+          "MaterialOverride": "rocks/sulfuroretexture.vmat",
+          "Model": "rocks/sulfurorenodev1.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,0.99566,0.73953,1"
         }
       ],
       "Children": []
