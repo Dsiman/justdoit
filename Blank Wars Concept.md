@@ -1,151 +1,261 @@
+# 🛠️ **Blank Wars – Game Design Concept**
 
-### 🌐 **Server Basics**
+### 🎮 **Genre**
 
-- Each server supports **10–50 players**
+- **Survival** / **RTS** / **Base-Building**
     
-- Server duration: **1 week** (7 days)
+- **Top-Down** and/or **First-Person** (toggle between perspectives)
     
-- Objective: **Become the top player by the end**, measured in:
-    
-    - 🔹 **Matter collected**
-        
-    - 💰 **Money generated**
-        
-    - 🏗️ **Base size + claimed land**
-        
-
----
-
-## 📍 **Spawn Selection Phase**
-
-### 🔲 **Claimable Map Grid**
-
-- The world map is broken into **grid zones**.
-    
-- Each grid:
-    
-    - Has **hidden resource values** (stone, metal, etc.)
-        
-    - Shows **availability status** (claimed/unclaimed)
-        
-- **Claimed zones:**
-    
-    - Are **blacked out** until you explore them in-game
-        
-    - Are **locked** and cannot be selected for spawning
-        
-- **Unclaimed zones:**
-    
-    - Show approximate **resource richness** (via heat map or % bar)
-        
-    - Allow **pre-claim marking** before joining the server
-        
-
-### ✅ **Claiming System**
-
-- Before spawning, you:
-    
-    1. Select an **unclaimed zone**
-        
-    2. Place a **Claim Marker** (shows resource stats within radius)
-        
-    3. If satisfied, place a **Resource Cupboard**
-        
-    4. Upon placing the cupboard, the zone becomes:
-        
-        - **Your territory** (build/protect/expand)
-            
-        - **Locked for other players**
-            
-
----
-
-## 🔒 **Territory Control System**
-
-### 📦 **Resource Cupboard (RC) Mechanics**
-
-- One **RC per player** initially (expandable via research)
-    
-- Defines your **build radius** and **resource ownership**
-    
-- Prevents others from building or spawning within its radius
-    
-- Can be **upgraded** to:
-    
-    - Expand radius
-        
-    - Increase defense
-        
-    - Auto-repair nearby structures
-        
-- If **destroyed** or **decays**, land becomes **neutral again**
+- Session-based multiplayer: **10–50 players per 1-week server**
     
 
 ---
 
-## 🧭 **Exploration & Fog of War**
+## 🗺️ **World & Spawn System**
 
-- **Blacked-out (fogged)** areas can only be explored physically
+### 🌐 **Map-Based Server Structure**
+
+- The world is a large, **gridded map** with varied **biomes** (wastelands, forests, ruins, deserts).
     
-- Players must **venture out** to scout:
+- Each server lasts **1 real-world week**.
     
-    - Other player bases
+- Goal: Become the **biggest player** by:
+    
+    - Total **Matter**
         
-    - Resource nodes
+    - Total **Money**
         
-    - Crap/junk fields
+    - **Claimed land & base size**
         
-    - Strategic high-resource zones
+
+### 📍 **Spawn and Land Claiming**
+
+- Players choose a **starting area** from available (unclaimed) zones.
+    
+- **Claiming Process:**
+    
+    1. Select an **open grid** on the world map.
+        
+    2. Place a **Claim Marker** – shows estimated resources in its radius:
+        
+        - Stone, Metal, Sulfur, Coal, Wood, Water
+            
+    3. If satisfied, **confirm** and place a **Resource Cupboard (RC)**.
+        
+    4. Area is now **claimed** and **locked** to other players.
+        
+- **Claimed zones** are:
+    
+    - **Blacked out** on the map until physically explored
+        
+    - **Unselectable** for new players
         
 
 ---
 
-## 🌍 **Resource Density Display**
+## 🧍 **Starting Phase: Day 0**
 
-- When selecting a spawn zone, you see estimated resources:
+When the player spawns:
+
+- They begin with:
     
-    - 📊 **Resource Display** (example):
+    - 🏚️ A **Basic Base** (shack/slab)
         
-        - Stone: ★★★☆☆
-            
-        - Metal: ★★☆☆☆
-            
-        - Sulfur: ★☆☆☆☆
-            
-        - Water: ✔️ Nearby spring
-            
-- This info is shown **before committing to claim**
+    - 🛠️ A **Workbench**
+        
+    - 🧑‍🔧 One **Worker NPC**
+        
+
+---
+
+## 🔨 **Primitive Tools & Survival**
+
+First objectives are classic survival-style:
+
+- Manually gather:
+    
+    - **Sticks**, **Stone**, **Twine**
+        
+- Craft your first tools:
+    
+    - **Stone Pickaxe**, **Stone Axe**
+        
+- Begin harvesting:
+    
+    - **Wood**, **Stone**, **Metal Ore**
+        
+
+---
+
+## 🧺 **Junk Looting & Crap System**
+
+Scattered across the world: **junk piles**
+
+- Loot these to collect "**Crap**":
+    
+    - 💣 Weapon Parts, 🧰 Electronics, 🚧 Signs, 🧵 Cloth, 🔩 Pipes, 🚙 Car Parts, ⚙️ Machine Parts
+        
+
+**Crap Uses:**
+
+1. **Craft** makeshift/advanced items and machines
+    
+2. Feed into a **Demineralizer** → extract **Raw Matter**
     
 
 ---
 
-## 🔄 **Player Loop Refinement**
+## ⚗️ **Matter & Research System**
 
-1. **Pick a zone** → evaluate resources
+- **Matter** = universal energy currency
     
-2. **Place Claim Marker** → view radius/resource preview
+- Used for:
     
-3. **Confirm + Place Resource Cupboard**
+    - 📚 **Research** (Buildings, Tools, Guns, Helpers)
+        
+    - 🔓 Unlocking **Money Printers**
+        
+    - 🔧 Powering certain machines
+        
+
+**Advanced Crap = More Matter**
+
+---
+
+## 🏗️ **Building & Base Progression**
+
+As you progress:
+
+- Research and unlock structures like:
     
-4. **Spawn in + start from scratch**
+    - 🧱 Walls & Traps
+        
+    - 🔫 Auto-Turrets
+        
+    - 🧪 Labs
+        
+    - 🔧 Crafting Benches
+        
+    - 🔥 Smelters
+        
+    - 🌱 Greenhouses
+        
+
+**Base Strategy:**
+
+- Placement, defense, and utility balance is key
     
-5. **Gather, build, loot crap, demineralize**
-    
-6. **Expand tech, unlock printers**
-    
-7. **Defend territory + explore others**
-    
-8. **Endgame: Dominate with Money, Matter, Size**
+- Claim more land by expanding or placing more RCs (researched)
     
 
 ---
 
-## 🏆 **Win Conditions / Leaderboard**
+## 💸 **Printers & Player Economy**
 
-At the end of the 1-week cycle, the game tallies:
+Unlock and build:
 
-- Total **Matter Produced**
+- **Money Printers**:
     
-- Total **Money Printed**
+    - Consume energy and crap to produce **passive income**
+        
+
+**Use Money to:**
+
+- 🏗️ Upgrade: walls, buildings
     
-- Total **Claimed Land Size**
+- 🛠️ Improve: tools, armor, weapons
+    
+- 🤖 Hire/upgrade: **AI Helpers**
+    
+
+---
+
+## 🤖 **Helpers System**
+
+Once unlocked via research:
+
+- Assign AI Workers to:
+    
+    - ⛏️ Gather resources
+        
+    - 🏭 Operate machines
+        
+    - 🛡️ Defend the base
+        
+    - 🛠️ Repair structures
+        
+- Each helper type can be specialized
+    
+
+---
+
+## 🔫 **Combat & Factions**
+
+- Servers are **PvPvE**:
+    
+    - Enemy **AI factions** roam and attack
+        
+    - Other **players can raid**, sabotage, or ally with you
+        
+- World events:
+    
+    - 📦 **Supply Drops**
+        
+    - ⚔️ **Territory Wars**
+        
+    - 💣 **Base Raids**
+        
+
+---
+
+## 🗺️ **World Zones & Biomes**
+
+Each grid on the map includes:
+
+- Unique **biome effects** (heat, storm, decay)
+    
+- **Loot density** (more crap, better crap)
+    
+- **Enemy difficulty**
+    
+- **Resource variety**
+    
+
+Some zones become **hot zones** for rare loot.
+
+---
+
+## 🔄 **Gameplay Loop**
+
+1. **Pick a zone** → claim land
+    
+2. **Explore** → gather starter resources
+    
+3. **Craft** → tools and basic structures
+    
+4. **Loot crap** → find junk piles
+    
+5. **Demineralize** → convert crap to Matter
+    
+6. **Research tech** → unlock printers, helpers, new buildings
+    
+7. **Print money** → fuel upgrades and economy
+    
+8. **Expand** → grow base, claim more zones
+    
+9. **Fight & Defend** → raid others, survive raids
+    
+10. **Dominate** → reach top of the weekly leaderboard
+    
+
+---
+
+## 🏆 **Endgame: Leaderboard System**
+
+At the end of the week, the server ranks players by:
+
+- 🧪 **Total Matter produced**
+    
+- 💰 **Total Money printed**
+    
+- 📐 **Base Size & Claimed Land**
