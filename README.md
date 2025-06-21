@@ -33,8 +33,8 @@ This repo is set up to help multiple people work together effectively on a singl
 1. Go to `Edit` > `Preferences`.
 2. Under the **General** tab, set your **Code Editor** to `Visual Studio Code`.
 
-![Set IDE](20250619165133.png)  
-![Choose Code Editor](20250619165328.png)
+![Set IDE](Docs/Images/20250619165133.png)  
+![Choose Code Editor](Docs/Images/20250619165328.png)
 
 ---
 
@@ -47,8 +47,8 @@ This repo is set up to help multiple people work together effectively on a singl
 3. Commit your changes — use the ✨ icon to auto-generate a message if needed.
 4. Push or pull changes to sync with GitHub.
 
-![Git Add](20250619171536.png)  
-![Git Commit](20250619171613.png)
+![Git Add](Docs/Images/20250619171536.png)  
+![Git Commit](Docs/Images/20250619171613.png)
 
 ---
 
@@ -61,8 +61,8 @@ If you want to contribute using Obsidian:
 2. Click `Manage Vaults` → `Open Folder as Vault`.
 3. Select the project folder.
 
-![Obsidian Open](20250619171806.png)  
-![Open as Vault](20250619171854.png)
+![Obsidian Open](Docs/Images/20250619171806.png)  
+![Open as Vault](Docs/Images/20250619171854.png)
 
 📌 When adding images to any notes or readmes, please move them to the `Images/` folder so they stay organized.
 
