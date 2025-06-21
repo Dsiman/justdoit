@@ -11,14 +11,12 @@
             "id": "f7c69a8579ecc30c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Assets/Generators/MedGenTexture.jpg"
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "lucide-image",
+              "title": "MedGenTexture"
             }
           }
         ]
@@ -166,12 +164,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "716a294380147d6c",
+  "active": "f7c69a8579ecc30c",
   "lastOpenFiles": [
+    "README.md",
     "Assets/Printers/medprinterv22.vmdl_c",
     "Assets/Printers/medprinterv22.vmdl",
     "🛠️ justdoit - Just Complete One Project.md",
-    "README.md",
     "Images/20250619171854.png",
     "Images/20250619171613.png",
     "Images/20250619171806.png",
