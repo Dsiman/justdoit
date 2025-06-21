@@ -5,14 +5,14 @@
 - Drop the model (`.fbx`, `.obj`, etc.) and its textures into an appropriate subfolder inside `Assets/Models`.
 - Name the folder based on the model's **use or type**.
 
-![Import Folder](Images/20250619170545.png)
+![Import Folder](20250619170545.png)
 
 #### Step 2: Create the `.vmdl`
 
 - Right-click the **main model file** and choose **"Create Model..."**.
 - This generates a `.vmdl` — the format Source 2 uses for in-game models.
 
-![Create Model](Images/20250619170753.png)
+![Create Model](20250619170753.png)
 
 #### Step 3: Fix Materials (if needed)
 
@@ -22,4 +22,4 @@
   - If there are extra material groups, remove them.
   - Click **"Needs Compiling"** to update changes.
 
-![Fix Textures](Images/20250619171126.png)
+![Fix Textures](20250619171126.png)
