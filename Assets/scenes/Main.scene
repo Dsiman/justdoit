@@ -1123,7 +1123,7 @@
             "Id": "00000000-0000-0000-0000-000000000000"
           },
           "FootstepVolume": 1,
-          "HideBodyInFirstPerson": true,
+          "HideBodyInFirstPerson": false,
           "JumpSpeed": 300,
           "LookSensitivity": 1,
           "OnComponentDestroy": null,
@@ -1287,7 +1287,50 @@
               "UseAnimGraph": true
             }
           ],
-          "Children": []
+          "Children": [
+            {
+              "__guid": "0333a990-2ccd-4086-b710-38ec772e08f0",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "pistolv2",
+              "Position": "31.9174,-13.98561,43.60841",
+              "Rotation": "0,0,0,1",
+              "Scale": "2,2,2",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "965806fa-f6b5-4e63-9332-3055e41e5311",
+                  "__enabled": true,
+                  "BodyGroups": 18446744073709551615,
+                  "CreateAttachments": false,
+                  "MaterialGroup": null,
+                  "MaterialOverride": null,
+                  "Model": "guns/pistols/pistolv2.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ],
+              "Children": []
+            }
+          ]
         },
         {
           "__guid": "a9329fa2-c724-4d59-995b-632771aa53df",
@@ -1756,6 +1799,48 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Model": "defaultblendercube/defaultplayersizecube.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "1fe0213d-93ad-48f5-a4f5-adc8cd989170",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "pistolv2",
+      "Position": "-96,-131.0534,11.25283",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "446de085-942d-4ac7-bc51-359cca7a9f0c",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "guns/pistols/pistolv2.vmdl",
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
