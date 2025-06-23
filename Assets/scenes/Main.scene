@@ -1287,50 +1287,7 @@
               "UseAnimGraph": true
             }
           ],
-          "Children": [
-            {
-              "__guid": "0333a990-2ccd-4086-b710-38ec772e08f0",
-              "__version": 1,
-              "Flags": 0,
-              "Name": "pistolv2",
-              "Position": "31.9174,-13.98561,43.60841",
-              "Rotation": "0,0,0,1",
-              "Scale": "2,2,2",
-              "Tags": "",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "NetworkOrphaned": 0,
-              "OwnerTransfer": 1,
-              "Components": [
-                {
-                  "__type": "Sandbox.ModelRenderer",
-                  "__guid": "965806fa-f6b5-4e63-9332-3055e41e5311",
-                  "__enabled": true,
-                  "BodyGroups": 18446744073709551615,
-                  "CreateAttachments": false,
-                  "MaterialGroup": null,
-                  "MaterialOverride": null,
-                  "Model": "guns/pistols/pistolv2.vmdl",
-                  "OnComponentDestroy": null,
-                  "OnComponentDisabled": null,
-                  "OnComponentEnabled": null,
-                  "OnComponentFixedUpdate": null,
-                  "OnComponentStart": null,
-                  "OnComponentUpdate": null,
-                  "RenderOptions": {
-                    "GameLayer": true,
-                    "OverlayLayer": false,
-                    "BloomLayer": false,
-                    "AfterUILayer": false
-                  },
-                  "RenderType": "On",
-                  "Tint": "1,1,1,1"
-                }
-              ],
-              "Children": []
-            }
-          ]
+          "Children": []
         },
         {
           "__guid": "a9329fa2-c724-4d59-995b-632771aa53df",
@@ -1857,7 +1814,50 @@
           "Tint": "1,1,1,1"
         }
       ],
-      "Children": []
+      "Children": [
+        {
+          "__guid": "0333a990-2ccd-4086-b710-38ec772e08f0",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "pistolv2",
+          "Position": "-14.6189,26.16685,15.62357",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "965806fa-f6b5-4e63-9332-3055e41e5311",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "guns/pistols/pistolv2.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        }
+      ]
     }
   ],
   "SceneProperties": {
