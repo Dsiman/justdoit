@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Citizen;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,14 +14,18 @@ public sealed class TestNPC : Component
 
 	private NPCState State { get; set; } = NPCState.Idle;
 
+	private SkinnedModelRenderer _skinnedModelRenderer => GameObject.Components.Get<SkinnedModelRenderer>();
+
 	public enum NPCState
 	{
+		None,
 		Idle,
 		Walking
 	}
 
 	protected override void OnAwake()
 	{
+		_skinnedModelRenderer.Parameters.Set( "special_movement_states", 2);
 		_agent = GameObject.Components.Get<NavMeshAgent>();
 		if ( _agent == null )
 		{
@@ -57,7 +62,6 @@ public sealed class TestNPC : Component
 	{
 		var index = Game.Random.Int( 0, _waypoints.Count - 1 );
 		_targetPosition = _waypoints[index].WorldPosition;
-
 		GameObject.WorldRotation = Rotation.LookAt( (_targetPosition - GameObject.WorldPosition).Normal, Vector3.Up );
 		_agent.MoveTo( _targetPosition );
 		_lastPosition = GameObject.WorldPosition;

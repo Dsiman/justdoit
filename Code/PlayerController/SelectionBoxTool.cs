@@ -23,15 +23,15 @@ public sealed class SelectionBoxTool : Component
 
 	private void HandleMouseInput()
 	{
-		if ( Input.Pressed( "Attack1" ) )
+		if ( Input.Pressed( "Mouse1" ) )
 		{
 			StartSelection();
 		}
-		else if ( Input.Down( "Attack1" ) && _isSelecting )
+		else if ( Input.Down( "Mouse1" ) && _isSelecting )
 		{
 			UpdateSelection();
 		}
-		else if ( Input.Released( "Attack1" ) && _isSelecting )
+		else if ( Input.Released( "Mouse1" ) && _isSelecting )
 		{
 			FinalizeSelection();
 		}
@@ -88,7 +88,21 @@ public sealed class SelectionBoxTool : Component
 
 	private void SelectObjectsInBox()
 	{
+		foreach ( var obj in Selected )
+		{
+			var selectable = obj.Components.Get<SelectableUnit>();
+			if ( selectable != null )
+			{
+				selectable._isSelected = false;
+			}
+			var selectablebuilding = obj.Components.Get<SelectableBuilding>();
+			if ( selectable != null )
+			{
+				selectable._isSelected = false;
+			}
+		}
 		Selected.Clear();
+
 		if ( !_isSelecting ) return;
 
 		// Create a bounding box from start to end positions
@@ -114,6 +128,20 @@ public sealed class SelectionBoxTool : Component
 		var selectables = Scene.GetAllObjects( true )
 			.Where( go => go.Tags.Has( "selectable" ) &&
 						 bounds.Contains( go.WorldPosition ) );
+
+		foreach ( var obj in selectables )
+		{
+			var selectable = obj.Components.Get<SelectableUnit>();
+			if ( selectable != null )
+			{
+				selectable._isSelected = true;
+			}
+			var selectablebuilding = obj.Components.Get<SelectableBuilding>();
+			if ( selectable != null )
+			{
+				selectable._isSelected = true;
+			}
+		}
 
 		Selected.AddRange( selectables );
 	}
