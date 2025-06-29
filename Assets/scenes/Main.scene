@@ -1740,7 +1740,7 @@
               "Position": "0,-99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -1822,7 +1822,7 @@
               "Position": "0,99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -1904,7 +1904,7 @@
               "Position": "-99.2,0,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -1986,7 +1986,7 @@
               "Position": "-99.2,-99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -2068,7 +2068,7 @@
               "Position": "-99.2,99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -2150,7 +2150,7 @@
               "Position": "99.2,-99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -2232,7 +2232,7 @@
               "Position": "99.2,99.2,0",
               "Rotation": "0,0,0,1",
               "Scale": "1,1,1",
-              "Tags": "world",
+              "Tags": "",
               "Enabled": true,
               "NetworkMode": 2,
               "NetworkInterpolation": true,
@@ -4303,6 +4303,72 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "3663cf92-f9ad-4f66-96c9-aadabbc41e16",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "MapGen",
+      "Position": "-560.363,1695.807,54.18954",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "MapGen",
+          "__guid": "8ed0670b-e4d7-431d-a1b0-a1256c68930c",
+          "__enabled": true,
+          "Height": 64,
+          "HeightMultiplier": 32,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Scale": 20,
+          "Width": 65
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "ec9de305-a2f0-48e1-b1d3-44c359705875",
+          "__version": 1,
+          "__Prefab": "procedural_map/prefab/block.prefab",
+          "__PrefabInstancePatch": {
+            "AddedObjects": [],
+            "RemovedObjects": [],
+            "PropertyOverrides": [
+              {
+                "Target": {
+                  "Type": "GameObject",
+                  "IdValue": "6b6139b0-0fd9-4cc1-a2b2-70d827de60a5"
+                },
+                "Property": "Position",
+                "Value": "240.3631,-287.8074,-29.18954"
+              },
+              {
+                "Target": {
+                  "Type": "Component",
+                  "IdValue": "22a06a23-0947-4352-81b9-b8dbe06f6c25"
+                },
+                "Property": "CreateAttachments",
+                "Value": true
+              }
+            ],
+            "MovedObjects": []
+          },
+          "__PrefabIdToInstanceId": {
+            "6b6139b0-0fd9-4cc1-a2b2-70d827de60a5": "ec9de305-a2f0-48e1-b1d3-44c359705875",
+            "22a06a23-0947-4352-81b9-b8dbe06f6c25": "f59c70ee-9288-4a01-9479-0096a67a59c6"
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {
