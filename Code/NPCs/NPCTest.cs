@@ -15,12 +15,14 @@ public sealed class TestNPC : Component
 	private NPCState State { get; set; } = NPCState.Idle;
 
 	private SkinnedModelRenderer _skinnedModelRenderer => GameObject.Components.Get<SkinnedModelRenderer>();
+	private InfoPanel _infoPanel => GameObject.Components.Get<InfoPanel>();
 
 	public enum NPCState
 	{
 		None,
 		Idle,
-		Walking
+		Walking,
+		Goto,
 	}
 
 	protected override void OnAwake()
@@ -45,7 +47,7 @@ public sealed class TestNPC : Component
 		if ( _agent == null || _waypoints.Count == 0 )
 			return;
 
-		switch ( State )
+		switch (State)
 		{
 			case NPCState.Idle:
 				ChooseNewTarget();
@@ -58,12 +60,26 @@ public sealed class TestNPC : Component
 		}
 	}
 
+	public void GoTo(Vector3 position)
+	{
+		_infoPanel.Info($"Going to position: goint to new position {position}");
+		_targetPosition = position;
+		GameObject.WorldRotation = Rotation.LookAt((_targetPosition - GameObject.WorldPosition).Normal, Vector3.Up);
+		_agent.MoveTo(_targetPosition);
+		_lastPosition = GameObject.WorldPosition;
+		_stuckTimer = 0f;
+
+		State = NPCState.Walking;
+	}
+
+
 	private void ChooseNewTarget()
 	{
-		var index = Game.Random.Int( 0, _waypoints.Count - 1 );
+		_infoPanel.Info("Choosing new target position.");
+		var index = Game.Random.Int(0, _waypoints.Count - 1);
 		_targetPosition = _waypoints[index].WorldPosition;
-		GameObject.WorldRotation = Rotation.LookAt( (_targetPosition - GameObject.WorldPosition).Normal, Vector3.Up );
-		_agent.MoveTo( _targetPosition );
+		GameObject.WorldRotation = Rotation.LookAt((_targetPosition - GameObject.WorldPosition).Normal, Vector3.Up);
+		_agent.MoveTo(_targetPosition);
 		_lastPosition = GameObject.WorldPosition;
 		_stuckTimer = 0f;
 
@@ -88,6 +104,7 @@ public sealed class TestNPC : Component
 			_stuckTimer += Time.Delta;
 			if ( _stuckTimer >= 1f )
 			{
+				_infoPanel.Error( "NPC is stuck and will choose a new target." );
 				Log.Info( "NPC was stuck, choosing new target." );
 				_agent.Stop();
 				State = NPCState.Idle;

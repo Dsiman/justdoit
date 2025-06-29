@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Runtime.Serialization;
 using Sandbox;
 
@@ -128,13 +129,38 @@ public sealed class TopDownPlayerController : Component
 
 		// Mouse2 - Camera rotation/orbiting
 		HandleMouseRotation();
+
+		// Mouse2 - Issue commands to npcs
+		HandleNpcCommands();
 		
 		// Mouse3 - Camera panning and reset
 		HandleCameraPanning();
 		
 		UpdateCameraPosition();
 	}
-	
+
+	public void HandleNpcCommands()
+	{
+		// if the player has anything in
+		if (Input.Pressed("Mouse2") && GameObject.GetComponent<SelectionBoxTool>().Selected.Count() > 0)
+		{
+			CameraComponent camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+			var ray = camera.ScreenPixelToRay(Sandbox.Mouse.Position);
+			var tr = Scene.Trace.Ray(ray, 5000f).WithTag("world").Run();
+			if (tr.Hit)
+			{
+				// If the player clicks on a valid position, issue a command to the selected NPCs
+				foreach (var npc in GameObject.GetComponent<SelectionBoxTool>().Selected)
+				{
+					npc.GetComponent<TestNPC>()?.GoTo(tr.HitPosition);
+				}
+			}
+			else
+			{
+				Log.Warning("No valid target position for NPC commands.");
+			}
+		}
+	}
 	private void HandleMouseRotation()
 	{
 		if (Input.Pressed("Mouse2"))
@@ -149,18 +175,18 @@ public sealed class TopDownPlayerController : Component
 			_isOrbiting = false;
 			Sandbox.Mouse.Visibility = MouseVisibility.Visible;
 		}
-		
+
 		if (_isOrbiting)
 		{
 			Vector2 mouseDelta = (Sandbox.Mouse.Position - _lastMousePosition) * MouseRotationSensitivity;
 			_lastMousePosition = Sandbox.Mouse.Position;
-			
+
 			// Adjust player's yaw based on horizontal mouse movement
 			_currentYaw += -mouseDelta.x;
-			
+
 			// Adjust camera's pitch based on vertical mouse movement
 			_currentPitch -= -mouseDelta.y;
-			
+
 			// Clamp pitch to prevent flipping
 			_currentPitch = MathX.Clamp(_currentPitch, MinPitchAngle, MaxPitchAngle);
 		}

@@ -1,177 +1,249 @@
 using Sandbox;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public sealed class SelectionBoxTool : Component
 {
-	[Property] public List<GameObject> Selected { get; private set; } = new List<GameObject>(50);
-	public CameraComponent Camera { get; private set; }
-	private Vector3 _selectionBoxStart;
-	private Vector3 _selectionBoxEnd;
-	private bool _isSelecting;
+    [Property] public List<GameObject> Selected { get; private set; } = new List<GameObject>();
+    public CameraComponent Camera { get; private set; }
+    
+    private const float DRAG_THRESHOLD = 5f; // Pixels needed to start drag
+    private Vector3 _selectionBoxStart;
+    private Vector3 _selectionBoxEnd;
+    private bool _isDragging;
+    private bool _multiSelectMode;
+    private Vector2 _mousePressPosition;
+    private GameObject _initialHitObject;
 
 	protected override void OnAwake()
 	{
-		Camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+		Camera = Scene.Camera ?? Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 		Sandbox.Mouse.Visibility = MouseVisibility.Visible;
-	}
+    }
 
+    protected override void OnUpdate()
+    {
+        HandleMouseInput();
+        DrawDebugVisuals();
+    }
 
-	protected override void OnUpdate()
-	{
-		HandleMouseInput();
-	}
+    private void HandleMouseInput()
+    {
+        // Update multi-select mode based on Shift key
+        _multiSelectMode = Input.Down("Shift");
+        
+        // Handle mouse press
+        if (Input.Pressed("Mouse1"))
+        {
+            StartPress();
+        }
+        
+        // Check for drag start
+        if (!_isDragging && Input.Down("Mouse1") && 
+            Vector2.DistanceBetween(_mousePressPosition, Mouse.Position) > DRAG_THRESHOLD)
+        {
+            StartDrag();
+        }
+        
+        // Handle active drag
+        if (_isDragging && Input.Down("Mouse1"))
+        {
+            UpdateDrag();
+        }
+        
+        // Handle mouse release
+        if (Input.Released("Mouse1"))
+        {
+            if (_isDragging)
+            {
+                FinalizeDrag();
+            }
+            else
+            {
+                HandleClick();
+            }
+        }
+    }
 
-	private void HandleMouseInput()
-	{
-		if ( Input.Pressed( "Mouse1" ) )
-		{
-			StartSelection();
-		}
-		else if ( Input.Down( "Mouse1" ) && _isSelecting )
-		{
-			UpdateSelection();
-		}
-		else if ( Input.Released( "Mouse1" ) && _isSelecting )
-		{
-			FinalizeSelection();
-		}
-	}
+    private void StartPress()
+    {
+        // Record initial mouse position and hit object
+        _mousePressPosition = Mouse.Position;
+        var ray = Camera.ScreenPixelToRay(_mousePressPosition);
+        var tr = Scene.Trace.Ray(ray, 5000f).WithTag("selectable").Run();
+        _initialHitObject = tr.Hit ? tr.GameObject : null;
+    }
 
-	private void StartSelection()
-	{
-		_isSelecting = true;
+    private void StartDrag()
+    {
+        _isDragging = true;
+        
+        // Convert initial mouse position to world position
+        var ray = Camera.ScreenPixelToRay(_mousePressPosition);
+        var tr = Scene.Trace.Ray(ray, 5000f).WithTag("world").Run();
+        _selectionBoxStart = tr.Hit ? tr.HitPosition : Vector3.Zero;
+        _selectionBoxEnd = _selectionBoxStart;
+    }
 
-		var ray = Camera.ScreenPixelToRay( Mouse.Position );
-		var tr = Scene.Trace.Ray( ray, 5000f ).WithTag( "world" ).Run();
-		_selectionBoxStart = tr.HitPosition;
-		_selectionBoxEnd = _selectionBoxStart;
-		UpdateBoxVisual();
-	}
+    private void UpdateDrag()
+    {
+        // Update selection box end position
+        var ray = Camera.ScreenPixelToRay(Mouse.Position);
+        var tr = Scene.Trace.Ray(ray, 5000f).WithTag("world").Run();
+        if (tr.Hit)
+        {
+            _selectionBoxEnd = tr.HitPosition;
+        }
+    }
 
-	private void UpdateSelection()
-	{
-		var ray = Camera.ScreenPixelToRay( Mouse.Position );
-		var tr = Scene.Trace.Ray( ray, 5000f ).WithTag( "world" ).Run();
-		_selectionBoxEnd = tr.HitPosition;
-		UpdateBoxVisual();
-    	PreviewSelectionInBox();
-	}
+    private void FinalizeDrag()
+    {
+        // Handle box selection
+        SelectObjectsInBox();
+        
+        // Reset drag state
+        _isDragging = false;
+        _selectionBoxStart = Vector3.Zero;
+        _selectionBoxEnd = Vector3.Zero;
+    }
 
-	private void FinalizeSelection()
-	{
-		SelectObjectsInBox();
-		_isSelecting = false;
-		_selectionBoxStart = Vector3.Zero;
-		_selectionBoxEnd = Vector3.Zero;
-	}
+    private void HandleClick()
+    {
+        if (_initialHitObject != null)
+        {
+            if (_multiSelectMode)
+            {
+                ToggleSelection(_initialHitObject);
+            }
+            else
+            {
+                ClearSelection();
+                AddToSelection(_initialHitObject);
+            }
+        }
+        else if (!_multiSelectMode)
+        {
+            ClearSelection();
+        }
+    }
 
-	private void UpdateBoxVisual()
-	{
-		var start = _selectionBoxStart;
-		var end = _selectionBoxEnd;
+    private void SelectObjectsInBox()
+    {
+        // Create selection bounds
+        var min = new Vector3(
+            Math.Min(_selectionBoxStart.x, _selectionBoxEnd.x),
+            Math.Min(_selectionBoxStart.y, _selectionBoxEnd.y),
+            Math.Min(_selectionBoxStart.z, _selectionBoxEnd.z) - 50f
+        );
+        
+        var max = new Vector3(
+            Math.Max(_selectionBoxStart.x, _selectionBoxEnd.x),
+            Math.Max(_selectionBoxStart.y, _selectionBoxEnd.y),
+            Math.Max(_selectionBoxStart.z, _selectionBoxEnd.z) + 50f
+        );
+        
+        var bounds = new BBox(min, max);
+        
+        // Find selectable objects in bounds
+        var newSelection = Scene.GetAllObjects(true)
+            .Where(go => go.Tags.Has("selectable") && 
+                         bounds.Contains(go.WorldPosition))
+            .ToList();
 
-		// Flatten Z to ground if desired
-		var min = new Vector2( Math.Min( start.x, end.x ), Math.Min( start.y, end.y ) );
-		var max = new Vector2( Math.Max( start.x, end.x ), Math.Max( start.y, end.y ) );
-		var center = (min + max) / 2;
-		var size = max - min;
+        // Update selection based on mode
+        if (!_multiSelectMode)
+        {
+            ClearSelection();
+        }
 
-		DebugOverlay.Box(
-			new BBox(
-				new Vector3( center.x - size.x / 2, center.y - size.y / 2, 0 ),
-				new Vector3( center.x + size.x / 2, center.y + size.y / 2, 10 )
-			),
-			Color.Cyan.WithAlpha( 0.2f ),
-			0.1f // Short time, refreshes each frame while dragging
-		);
-	}
+        foreach (var obj in newSelection)
+        {
+            if (!Selected.Contains(obj))
+            {
+                AddToSelection(obj);
+            }
+        }
+    }
 
-	private void SelectObjectsInBox()
-	{
-		foreach ( var obj in Selected )
-		{
-			var selectable = obj.Components.Get<SelectableUnit>();
-			if ( selectable != null )
-			{
-				selectable._isSelected = false;
-			}
-			var selectablebuilding = obj.Components.Get<SelectableBuilding>();
-			if ( selectable != null )
-			{
-				selectable._isSelected = false;
-			}
-		}
-		Selected.Clear();
+    private void DrawDebugVisuals()
+    {
+        // Draw hover effect for selectables
+        var ray = Camera.ScreenPixelToRay(Mouse.Position);
+        var tr = Scene.Trace.Ray(ray, 5000f).WithTag("selectable").Run();
+        if (tr.Hit)
+        {
+            DebugOverlay.Sphere(
+                new Sphere(tr.GameObject.WorldPosition + Vector3.Up * 30, 50f),
+                Color.Yellow.WithAlpha(0.1f),
+                0.01f
+            );
+        }
 
-		if ( !_isSelecting ) return;
+        // Draw selection box when dragging
+        if (_isDragging)
+        {
+            var min = new Vector3(
+                Math.Min(_selectionBoxStart.x, _selectionBoxEnd.x),
+                Math.Min(_selectionBoxStart.y, _selectionBoxEnd.y),
+                Math.Min(_selectionBoxStart.z, _selectionBoxEnd.z) - 50f
+            );
+            
+            var max = new Vector3(
+                Math.Max(_selectionBoxStart.x, _selectionBoxEnd.x),
+                Math.Max(_selectionBoxStart.y, _selectionBoxEnd.y),
+                Math.Max(_selectionBoxStart.z, _selectionBoxEnd.z) + 50f
+            );
+            
+            DebugOverlay.Box(
+                new BBox(min, max),
+                Color.Cyan.WithAlpha(0.2f),
+                0.1f
+            );
+        }
+    }
 
-		// Create a bounding box from start to end positions
-		var min = new Vector3(
-			Math.Min( _selectionBoxStart.x, _selectionBoxEnd.x ),
-			Math.Min( _selectionBoxStart.y, _selectionBoxEnd.y ),
-			Math.Min( _selectionBoxStart.z, _selectionBoxEnd.z )
-		);
+    private void AddToSelection(GameObject obj)
+    {
+        if (obj == null || Selected.Contains(obj)) return;
+        
+        var selectable = obj.Components.Get<Selectable>();
+        if (selectable != null)
+        {
+            selectable._isSelected = true;
+            Selected.Add(obj);
+        }
+    }
 
-		var max = new Vector3(
-			Math.Max( _selectionBoxStart.x, _selectionBoxEnd.x ),
-			Math.Max( _selectionBoxStart.y, _selectionBoxEnd.y ),
-			Math.Max( _selectionBoxStart.z, _selectionBoxEnd.z )
-		);
+    private void RemoveFromSelection(GameObject obj)
+    {
+        if (obj == null || !Selected.Contains(obj)) return;
+        
+        var selectable = obj.Components.Get<Selectable>();
+        if (selectable != null)
+        {
+            selectable._isSelected = false;
+            Selected.Remove(obj);
+        }
+    }
 
-		// Expand the Z range to capture objects at different heights
-		min = min.WithZ( min.z - 50f );
-		max = max.WithZ( max.z + 50f );
+    private void ToggleSelection(GameObject obj)
+    {
+        if (Selected.Contains(obj))
+        {
+            RemoveFromSelection(obj);
+        }
+        else
+        {
+            AddToSelection(obj);
+        }
+    }
 
-		var bounds = new BBox( min, max );
-
-		// Find selectable objects
-		var selectables = Scene.GetAllObjects( true )
-			.Where( go => go.Tags.Has( "selectable" ) &&
-						 bounds.Contains( go.WorldPosition ) );
-
-		foreach ( var obj in selectables )
-		{
-			var selectable = obj.Components.Get<SelectableUnit>();
-			if ( selectable != null )
-			{
-				selectable._isSelected = true;
-			}
-			var selectablebuilding = obj.Components.Get<SelectableBuilding>();
-			if ( selectable != null )
-			{
-				selectable._isSelected = true;
-			}
-		}
-
-		Selected.AddRange( selectables );
-	}
-	private void PreviewSelectionInBox()
-	{
-		var min = new Vector3(
-			Math.Min(_selectionBoxStart.x, _selectionBoxEnd.x),
-			Math.Min(_selectionBoxStart.y, _selectionBoxEnd.y),
-			Math.Min(_selectionBoxStart.z, _selectionBoxEnd.z)
-		);
-		
-		var max = new Vector3(
-			Math.Max(_selectionBoxStart.x, _selectionBoxEnd.x),
-			Math.Max(_selectionBoxStart.y, _selectionBoxEnd.y),
-			Math.Max(_selectionBoxStart.z, _selectionBoxEnd.z)
-		);
-
-		// Expand Z range to capture vertically-stacked objects
-		min = min.WithZ(min.z - 50f);
-		max = max.WithZ(max.z + 50f);
-
-		var bounds = new BBox(min, max);
-
-		var selectables = Scene.GetAllObjects(true)
-			.Where(go => go.Tags.Has("selectable") && bounds.Contains(go.WorldPosition));
-
-		foreach (var obj in selectables)
-		{
-			DebugOverlay.Sphere(new Sphere(obj.WorldPosition, 20f), Color.Yellow.WithAlpha(0.4f), 0.1f);
-		}
-	}
-
+    private void ClearSelection()
+    {
+        foreach (var obj in Selected.ToList())
+        {
+            RemoveFromSelection(obj);
+        }
+    }
 }
