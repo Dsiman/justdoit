@@ -7985,6 +7985,45 @@
           "Children": []
         }
       ]
+    },
+    {
+      "__guid": "2464d632-b18b-47c1-8e9f-b6a48e827666",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-9440,2528,-1280",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "IslandMapGenerator",
+          "__guid": "cc5076f5-24ca-49d8-964f-a8da3a1ae33d",
+          "__enabled": true,
+          "GridSize": 64,
+          "HeightMultiplier": 10,
+          "NoiseScale": 20,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RegenerateOnPlay": true,
+          "TilePrefab": {
+            "_type": "gameobject",
+            "prefab": "maptile/maptile2.prefab"
+          },
+          "TileSpacing": 128,
+          "WaterLevel": 0.3
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
