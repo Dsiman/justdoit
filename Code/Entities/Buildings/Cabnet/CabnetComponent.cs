@@ -2,7 +2,7 @@ using Sandbox;
 
 public sealed class CabnetComponent : BuildingComponent
 {
-
+	
 	protected override void OnAwake()
 	{
 		_selectionColor = Color.Blue;
@@ -13,7 +13,7 @@ public sealed class CabnetComponent : BuildingComponent
 	{
 		if ( _isSelected )
 		{
-
+			
 		}
 		else
 		{

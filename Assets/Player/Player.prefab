@@ -50,46 +50,6 @@
         "RotationSpeed": 50,
         "SlowMoveMultiplier": 0.5,
         "VerticalMoveSpeed": 200
-      },
-      {
-        "__type": "Sandbox.ScreenPanel",
-        "__guid": "8a071e1d-ecb9-41fb-87cc-742aab77e6f8",
-        "__enabled": true,
-        "AutoScreenScale": true,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null,
-        "Opacity": 1,
-        "Scale": 1,
-        "ScaleStrategy": "ConsistentHeight",
-        "TargetCamera": null,
-        "ZIndex": 100
-      },
-      {
-        "__type": "PlayerUIManager",
-        "__guid": "22341102-4fd9-4358-9ead-75e87f23826e",
-        "__enabled": true,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null
-      },
-      {
-        "__type": "Sandbox.SelectedInfoMenu",
-        "__guid": "355b97a6-1194-409a-bb38-aaff67b41af3",
-        "__enabled": true,
-        "MyStringValue": "Hello World!",
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null
       }
     ],
     "Children": [],

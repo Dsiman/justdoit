@@ -1,6 +1,6 @@
 using Sandbox.UI;
 
-public class InfoPanel : Selectable
+public class InfoPanel : Storeable
 {
 	public enum InfoPanelMode
 	{
