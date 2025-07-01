@@ -56,7 +56,7 @@ public sealed class IslandMapGenerator : Component
 
 				var tile = TilePrefab.Clone();
 				tile.Name = $"Tile_{x}_{y}";
-				tile.Transform.Position = new Vector3(x * TileSpacing, y * TileSpacing, height * TileSpacing);
+				tile.WorldPosition = new Vector3(x * TileSpacing, y * TileSpacing, height * TileSpacing);
 				tile.SetParent(GameObject);
 			}
 		}

@@ -91,9 +91,9 @@ public sealed class TopDownPlayerController : Component
 		// Movement input handling - now relative to player's rotation
 		Vector3 movement = Vector3.Zero;
 
-		if (Input.Down("W"))
+		if ( Input.Down( "W" ) )
 			movement += forward;
-		if (Input.Down("S"))
+		if ( Input.Down( "S" ) )
 			movement -= forward;
 		if (Input.Down("A"))
 			movement -= right;

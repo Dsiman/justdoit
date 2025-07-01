@@ -1,0 +1,51 @@
+SelectableCard
+{
+	width: 100px;
+	height: 160px;
+	background-color: #333;
+	border-radius: 8px;
+	border: 1px solid #555;
+	transition: transform 0.2s ease, z-index 0.2s;
+	transform: translateY(30px) scale(0.9);
+	z-index: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+    transition: all 0.2s ease;
+    pointer-events: all;
+
+    &:hover
+    {
+        transform: rotate(0deg) translateY(-10px) scale(1.05) !important;
+        z-index: 100 !important;
+    }
+
+	Label
+	{
+		color: white;
+		font-family: Poppins;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	Button
+	{
+		margin-top: 6px;
+		font-size: 12px;
+		background-color: #666;
+		color: white;
+		border-radius: 4px;
+		padding: 4px 8px;
+		cursor: pointer;
+
+		&:hover
+		{
+			background-color: #888;
+		}
+	}
+}

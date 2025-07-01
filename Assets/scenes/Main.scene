@@ -2778,6 +2778,52 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "3b43c331-2653-4111-bbc8-2d926c4e9c6e",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "UI",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "02bd3d4f-db81-4863-84b3-31d61349bcbc",
+              "__enabled": true,
+              "AutoScreenScale": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Opacity": 1,
+              "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
+              "TargetCamera": null,
+              "ZIndex": 100
+            },
+            {
+              "__type": "RootPanel",
+              "__guid": "48d37c06-13a6-408f-9267-5e422133fe11",
+              "__enabled": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
+            }
+          ],
+          "Children": []
         }
       ]
     },
@@ -8004,7 +8050,7 @@
         {
           "__type": "IslandMapGenerator",
           "__guid": "cc5076f5-24ca-49d8-964f-a8da3a1ae33d",
-          "__enabled": true,
+          "__enabled": false,
           "GridSize": 64,
           "HeightMultiplier": 10,
           "NoiseScale": 20,
