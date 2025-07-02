@@ -3,16 +3,16 @@ using Sandbox;
 
 public sealed class RootPanel : PanelComponent
 {
-    Selected selectedPanel;
+	Selected selectedPanel;
 
 
-    protected override void OnTreeFirstBuilt()
-    {
-        base.OnTreeFirstBuilt();
+	protected override void OnTreeFirstBuilt()
+	{
+		base.OnTreeFirstBuilt();
 
-        selectedPanel = new Selected();
-        selectedPanel.Parent = Panel;
+		selectedPanel = new Selected();
+		selectedPanel.Parent = Panel;
 
-    }
+	}
 
 }

@@ -2,7 +2,7 @@ using Sandbox;
 
 public sealed class CabnetComponent : BuildingComponent
 {
-	
+
 	protected override void OnAwake()
 	{
 		Name = "Tool Cabnet";
@@ -16,7 +16,7 @@ public sealed class CabnetComponent : BuildingComponent
 	{
 		if ( _isSelected )
 		{
-			
+
 		}
 		else
 		{

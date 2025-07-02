@@ -1,51 +1,101 @@
 SelectableCard
 {
-	width: 100px;
-	height: 160px;
+	width: 140px;
+	height: 200px;
 	background-color: #333;
 	border-radius: 8px;
 	border: 1px solid #555;
-	transition: transform 0.2s ease, z-index 0.2s;
-	transform: translateY(30px) scale(0.9);
-	z-index: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	gap: 6px;
-    position: absolute;
-    bottom: 0;
-    transform-origin: bottom center;
-    transition: all 0.2s ease;
-    pointer-events: all;
-
-    &:hover
-    {
-        transform: rotate(0deg) translateY(-10px) scale(1.05) !important;
-        z-index: 100 !important;
-    }
-
-	Label
+	position: relative;
+	pointer-events: all;
+	margin-right: -40px;
+	transition: transform 0.2s ease, z-index 0.2s, opacity 0.3s ease;
+	z-index: 0;
+	box-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+	opacity: 0.8; // Default translucency
+	
+	&:hover
 	{
-		color: white;
-		font-family: Poppins;
-		font-size: 14px;
-		text-align: center;
+		transform: translateY(-25px);
+		z-index: 100;
+		opacity: 1.0; // Fully opaque on hover
 	}
 
-	Button
-	{
-		margin-top: 6px;
-		font-size: 12px;
-		background-color: #666;
-		color: white;
-		border-radius: 4px;
-		padding: 4px 8px;
-		cursor: pointer;
+	.stats-panel {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 10%; // Taller bars
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+		padding: 5px;
+		z-index: 10;
+	}
 
-		&:hover
-		{
-			background-color: #888;
-		}
+	.health-bg, .energy-bg {
+		width: 100%;
+		height: 8px; // Taller bars
+		background-color: rgba(0,0,0,0.4);
+		border-radius: 4px;
+		overflow: hidden;
+	}
+	
+	.health-bar {
+		height: 100%;
+		background-color: #0f0; // Default green
+		border-radius: 4px;
+		transition: width 0.2s ease, background-color 0.2s ease;
+	}
+	
+	.energy-bar {
+		height: 100%;
+		background-color: #ff0;
+		border-radius: 4px;
+		transition: width 0.2s ease;
+	}
+
+	.card-name {
+		position: absolute;
+		top: 10%;
+		left: 0;
+		right: 0;
+		height: 30%;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+
+		color: white;
+		font-family: Poppins, sans-serif;
+		font-size: 18px; // Fixed size, not affected by parent scale
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+
+		z-index: 5;
+
+		/* Counteract the parent's scale (hover = scale(1), default = scale(0.9)) */
+		transform: scale(1.111); // Inverse of 0.9
+		transform-origin: top center;
+		pointer-events: none; // So it doesn’t interfere with hover
+	}
+
+	.texture-panel {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 60%; // 70% of bottom half
+		background-color: #555;
+		background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/63/Icon_Bird_512x512.png");
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		background-size: cover;
+		background-blend-mode: overlay;
 	}
 }

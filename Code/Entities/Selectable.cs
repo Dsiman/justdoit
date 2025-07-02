@@ -18,6 +18,10 @@ public class Selectable : Component
 
 	public bool _isSelected;
 	public Color _selectionColor = Color.Green;
+	public float Health = 100;
+	public float MaxHealth = 100;
+	public float Energy = 100;
+	public float MaxEnergy = 100;
 
 	public float MinRadius { get; set; } = 3f;
 	public float MaxRadius { get; set; } = 8f;
